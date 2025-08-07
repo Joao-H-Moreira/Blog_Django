@@ -28,20 +28,20 @@
             margin-bottom: 1.5rem;
             text-align: center;
         }
-        .recipe-item {
+        .film-item {
             display: flex;
             align-items: center;
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-        .recipe-item img {
+        .film-item img {
             width: 96px;
             height: 96px;
             object-fit: cover;
             border-radius: 0.5rem;
             box-shadow: 0 1px 3px 0 rgba(0,0,0, 0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
         }
-        .recipe-content {
+        .film-content {
             flex-grow: 1;
         }
         h2 {
@@ -85,20 +85,20 @@
     <div class="container">
         <h1>Filmes cadastrados!</h1>
 
-        {% for recipe in recipes %}
-            <div class="recipe-item">
-                {% if recipe.image %}
-                    <img src="{{ recipe.image.url }}" alt="Imagem da receita">
+        {% for film in films %}
+            <div class="film-item">
+                {% if film.image %}
+                    <img src="{{ film.image.url }}" alt="Imagem do filme {{ film.title }}">
                 {% endif %}
-                <div class="recipe-content">
-                    <h2><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}</a></h2>
-                    <p><strong>Tempo de Filme:</strong> {{ recipe.film_time }} minutos</p>
-                    <p><strong>Resumo:</strong> {{ recipe.resume }}</p>
+                <div class="film-content">
+                    <h2><a href="{% url 'film_detail' film.pk %}">{{ film.title }}</a></h2>
+                    <p><strong>Duração:</strong> {{ film.film_time }} minutos</p>
+                    <p><strong>Sinopse:</strong> {{ film.resume }}</p>
                 </div>
             </div>
             <hr>
         {% empty %}
-            <p class="empty-message">Nenhuma receita cadastrada.</p>
+            <p class="empty-message">Nenhum filme cadastrado.</p>
         {% endfor %}
     </div>
 </body>
